@@ -44,5 +44,5 @@ echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
-echo "Starting ubuntu..."
+echo ">>> 当前环境是 ubuntu <<<"
 proot-distro login ubuntu
