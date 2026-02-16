@@ -15,7 +15,7 @@ echo "SSH PORT  : ${SSH_PORT}"
 sshd -p ${SSH_PORT}
 # 输出连接提示
 echo "终端接入命令: ssh $(whoami)@${IP_ADDRESS} -p ${SSH_PORT}"
-
+echo -e "\n\n↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑\n"
 
 
 #test
