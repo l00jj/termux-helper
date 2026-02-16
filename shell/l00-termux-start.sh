@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 定义端口号变量
-SSH_PORT=3399
+SSH_PORT=10099
 
 # 使用 ifconfig 获取 IP 地址
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
@@ -15,7 +15,6 @@ echo "SSH PORT  : ${SSH_PORT}"
 sshd -p ${SSH_PORT}
 # 输出连接提示
 echo "终端接入命令: ssh $(whoami)@${IP_ADDRESS} -p ${SSH_PORT}"
-echo -e "\n\n - - - - - - - - - - - - - - - - - - -\n"
+echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
-
-#test
+proot-distro login ubuntu
