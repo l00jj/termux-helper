@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "\nl00 Init...\n"
+
 SSH_PORT=10099
 USER_NAME=$(whoami)
 PASS_FILE=~/l00-termux-start-pw
