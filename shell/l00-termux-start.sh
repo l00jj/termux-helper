@@ -7,26 +7,26 @@ PASS_FILE=~/l00-termux-start-pw
 # 获取 IP
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
 
-# 检查密码文件是否存在
-if [ -f "$PASS_FILE" ]; then
-    # 文件存在，读取已有密码
+# 检查 sshd 是否已经在运行，但当前无插件情况下不判断端口是否正确
+if pgrep -x sshd > /dev/null; then
+    echo "sshd already running on port ${SSH_PORT}"
+    # （暂时不需要验证）检查密码文件是否存在 if [ -f "$PASS_FILE" ]; then
     PASS=$(cat "$PASS_FILE")
-    PASS_STATUS="【读取已有密码】"
+    PASS_STATUS=""
 else
-    # 文件不存在，生成新密码
     PASS=$(printf "%06d" $(( $(od -An -N4 -tu4 < /dev/urandom) % 1000000 )))
-    
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof"
-    
     # 保存密码到文件
     echo "$PASS" > "$PASS_FILE"
-
     # 其他用户无法查看
     chmod 600 "$PASS_FILE"
-    
     PASS_STATUS="【已生成新密码】"
+    # 启动 sshd
+    echo "Starting sshd..."
+    sshd -p ${SSH_PORT}
 fi
+
 
 # 显示信息
 echo -e "\n\n↓↓↓↓↓↓↓ Termux SSH Information ↓↓↓↓↓↓↓\n"
@@ -34,15 +34,6 @@ echo "Username  : ${USER_NAME}"
 echo "IP Address: ${IP_ADDRESS}"
 echo "SSH PORT  : ${SSH_PORT}"
 echo "Password  : ${PASS}  ${PASS_STATUS}"
-
-# 检查 sshd 是否已经在运行，但当前无插件情况下不判断端口是否正确
-if pgrep -x sshd > /dev/null; then
-    echo "sshd already running on port ${SSH_PORT}"
-else
-    echo "Starting sshd..."
-    sshd -p ${SSH_PORT}
-fi
-
 echo "终端接入命令 : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
