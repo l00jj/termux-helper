@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\nl00 Init...\n"
+echo -e "\n------- l00 Init -------\n"
 
 SSH_PORT=10099
 USER_NAME=$(whoami)
@@ -39,9 +39,9 @@ echo "Password  : ${PASS}  ${PASS_STATUS}"
 echo "终端接入命令 : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
-echo "查询进程       : top"
-echo "终止相关进程    : pkill sshd"
-echo "终止PID进程    : kill <PID>"
+echo "查询进程    : top"
+echo "终止相关进程 : pkill sshd"
+echo "终止PID进程 : kill <PID>"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
 echo "Starting ubuntu..."
