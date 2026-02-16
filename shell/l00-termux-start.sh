@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "\nl00 Init...\n"
+echo -e "\nl00 Init...\n"
 
 SSH_PORT=10099
 USER_NAME=$(whoami)
