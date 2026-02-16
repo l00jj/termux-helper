@@ -21,6 +21,8 @@ else
     
     # 保存密码到文件
     echo "$PASS" > "$PASS_FILE"
+
+    # 其他用户无法查看
     chmod 600 "$PASS_FILE"
     
     PASS_STATUS="【已生成新密码】"
@@ -33,8 +35,8 @@ echo "IP Address: ${IP_ADDRESS}"
 echo "SSH PORT  : ${SSH_PORT}"
 echo "Password  : ${PASS}  ${PASS_STATUS}"
 
-# 检查端口是否已监听
-if ss -tln | grep -q ":${SSH_PORT}"; then
+# 检查 sshd 是否已经在运行，但当前无插件情况下不判断端口是否正确
+if pgrep -x sshd > /dev/null; then
     echo "sshd already running on port ${SSH_PORT}"
 else
     echo "Starting sshd..."
