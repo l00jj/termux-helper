@@ -21,7 +21,7 @@ else
     echo "$PASS" > "$PASS_FILE"
     # 其他用户无法查看
     chmod 600 "$PASS_FILE"
-    PASS_STATUS="【已生成新密码】"
+    PASS_STATUS="[New PW]"
     # 启动 sshd
     echo "Starting sshd..."
     sshd -p ${SSH_PORT}
@@ -37,4 +37,10 @@ echo "Password  : ${PASS}  ${PASS_STATUS}"
 echo "终端接入命令 : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
+echo "查询进程       : top"
+echo "终止相关进程    : pkill sshd"
+echo "终止PID进程    : kill <PID>"
+echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
+
+echo "Starting ubuntu..."
 proot-distro login ubuntu
