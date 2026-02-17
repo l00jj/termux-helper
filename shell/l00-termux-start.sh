@@ -16,8 +16,8 @@ if pgrep -x sshd > /dev/null; then
     PASS=$(cat "$PASS_FILE")
     PASS_STATUS=""
 else
-    # 可选密码范围 %0<number>d
-    PASS=$(printf "%04d" $(( $(od -An -N4 -tu4 < /dev/urandom) % 1000000 )))
+    # 可选密码范围 %0<number>d 10^<number>
+    PASS=$(printf "%04d" $(( $(od -An -N4 -tu4 < /dev/urandom) % 10000 )))
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof"
     # 保存密码到文件
