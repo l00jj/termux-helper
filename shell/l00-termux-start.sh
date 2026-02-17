@@ -2,7 +2,7 @@
 
 echo -e "\n------- l00 Init -------\n"
 
-SSH_PORT=10099
+SSH_PORT=55522
 USER_NAME=$(whoami)
 PASS_FILE=~/l00-termux-start-pw
 
@@ -16,7 +16,7 @@ if pgrep -x sshd > /dev/null; then
     PASS=$(cat "$PASS_FILE")
     PASS_STATUS=""
 else
-    PASS=$(printf "%06d" $(( $(od -An -N4 -tu4 < /dev/urandom) % 1000000 )))
+    PASS=$(printf "%05d" $(( $(od -An -N4 -tu4 < /dev/urandom) % 1000000 )))
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof"
     # 保存密码到文件
