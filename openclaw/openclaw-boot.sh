@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# 环境清理
-pkill -f "openclaw" > /dev/null 2>&1
+# 获取脚本自身 PID
+SCRIPT_PID=$$
+
+# 环境清理 - 排除脚本自身
+pgrep -f "openclaw" | grep -v "^${SCRIPT_PID}$" | xargs -r kill -9 > /dev/null 2>&1
 
 # 步骤 1: 快速预热网关
 echo "🔄 正在预热网关环境..."
