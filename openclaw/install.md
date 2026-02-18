@@ -15,6 +15,12 @@ https://docs.bigmodel.cn/cn/guide/develop/openclaw
 
 ## 日常启动
 
+下载
+```shell
+curl -fSSLo openclaw-boot.sh https://raw.githubusercontent.com/l00jj/termux-helper/refs/heads/main/openclaw/openclaw-boot.sh && chmod +x openclaw-boot.sh
 ```
-curl -fSSLo bot.sh https://raw.githubusercontent.com/Sislecv/openclaw-on-termux/refs/heads/main/bot.sh
+
+执行
+```shell
+bash openclaw-boot.sh
 ```
