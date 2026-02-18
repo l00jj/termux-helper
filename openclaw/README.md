@@ -5,7 +5,7 @@ npm install -g openclaw@latest
 ```
 ## 第一次执行
 
-初始化配置
+初始化配置（可能要等很久）
 ```shell
 openclaw onboard
 ```
