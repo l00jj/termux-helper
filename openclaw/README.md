@@ -3,15 +3,34 @@
 ```shell
 npm install -g openclaw@latest
 ```
-## 第一次执行
+## 初始化配置
 
-初始化配置（可能要等很久）
 ```shell
 openclaw onboard
 ```
+可能要等很久
 
 参考：
 https://docs.bigmodel.cn/cn/guide/develop/openclaw
+
+
+修改局域网访问
+```shell
+nano ~/.openclaw/openclaw.json
+```
+
+修改 gateway 的设置
+```json
+"gateway": {
+    "mode": "local",
+    "bind": "lan",
+    "controlUi": {
+        enabled: true,
+        allowInsecureAuth: true,
+    }
+}
+```
+
 
 
 下载启动脚本
