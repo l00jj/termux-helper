@@ -15,3 +15,6 @@ https://docs.bigmodel.cn/cn/guide/develop/openclaw
 
 ## 日常启动
 
+```
+curl -fSSLo bot.sh https://raw.githubusercontent.com/Sislecv/openclaw-on-termux/refs/heads/main/bot.sh
+```
