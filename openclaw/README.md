@@ -22,14 +22,22 @@ nano ~/.openclaw/openclaw.json
 修改 gateway 的设置
 ```json
 "gateway": {
-    "mode": "local",
-    "bind": "lan",
-    "controlUi": {
-        enabled: true,
-        allowInsecureAuth: true,
-    }
+  "mode": "local",
+  "bind": "lan",
+  "controlUi": {
+    "enabled": true,
+    "allowInsecureAuth": true,
+  },
 }
 ```
+openssl rand -hex 24
+openclaw config get gateway.auth.token
+
+# 更新 token
+openclaw config set gateway.auth.token "你的新token"
+openclaw config set gateway.bind "lan"
+openclaw config set gateway.controlUi.allowInsecureAuth "true"
+
 
 
 
@@ -49,3 +57,5 @@ ssh -N -L 18789:127.0.0.1:18789 root@192.168.31.183 -p 55522
 ```shell
 bash openclaw-boot.sh
 ```
+
+openclaw dashboard --no-open && openclaw gateway --verbose
