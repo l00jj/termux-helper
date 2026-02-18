@@ -38,6 +38,10 @@ openclaw config set gateway.auth.token "你的新token"
 openclaw config set gateway.bind "lan"
 openclaw config set gateway.controlUi.allowInsecureAuth "true"
 
+获取 IP 脚本
+```shell
+curl -fSSLo openclaw-ip.sh https://raw.githubusercontent.com/l00jj/termux-helper/refs/heads/main/openclaw/openclaw-ip.sh && chmod +x openclaw-ip.sh
+```
 
 
 
@@ -45,6 +49,7 @@ openclaw config set gateway.controlUi.allowInsecureAuth "true"
 ```shell
 curl -fSSLo openclaw-boot.sh https://raw.githubusercontent.com/l00jj/termux-helper/refs/heads/main/openclaw/openclaw-boot.sh && chmod +x openclaw-boot.sh
 ```
+
 
 穿透
 ```shell
