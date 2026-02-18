@@ -30,13 +30,17 @@ nano ~/.openclaw/openclaw.json
   },
 }
 ```
-openssl rand -hex 24
-openclaw config get gateway.auth.token
 
 # 更新 token
+openssl rand -hex 24
 openclaw config set gateway.auth.token "你的新token"
-openclaw config set gateway.bind "lan"
-openclaw config set gateway.controlUi.allowInsecureAuth "true"
+
+
+
+开启局域网模式
+```shell
+openclaw config set gateway.bind "lan" && openclaw config set gateway.controlUi.allowInsecureAuth "true"
+```
 
 获取 IP 脚本
 ```shell
