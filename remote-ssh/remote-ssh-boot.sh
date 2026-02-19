@@ -2,9 +2,6 @@
 
 echo -e "\n\n↓↓↓↓↓↓↓↓↓↓ Remote-SSH ↓↓↓↓↓↓↓↓↓↓\n"
 
-# 停止存在的服务
-killall sshd
-
 SSH_PORT=55599
 USER_NAME=$(whoami)
 
@@ -16,6 +13,10 @@ PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4)
 
 # 设置新密码
 expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
+
+# 停止存在的服务
+PID=$(ss -tlnp 2>/dev/null | grep ":${SSH_PORT}" | grep -oP 'pid=\K[0-9]+')
+[ -n "$PID" ] && kill $PID 2>/dev/null
 
 # PermitRootLogin yes         # 允许 Root 登录
 # PubkeyAuthentication no     # 不必配置秘钥
