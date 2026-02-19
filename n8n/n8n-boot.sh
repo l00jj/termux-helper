@@ -11,10 +11,9 @@ export N8N_SECURE_COOKIE=false
 export N8N_EDITOR_BASE_URL=http://${LOCAL_IP}:5678
 export TZ=Asia/Shanghai
 
-# Task Runner 配置（当前禁用）
-export N8N_RUNNERS_MODE=external
-export EXECUTIONS_MODE=regular
-export N8N_DISABLE_PRODUCTION_MAIN_PROCESS=true
+# 设置环境变量禁用 Python Task Runner
+export N8N_RUNNERS_ENABLED=false
+export N8N_TASK_RUNNERS_ENABLED=false
 
 # 禁用诊断数据上报
 export N8N_DIAGNOSTICS_ENABLED=false
