@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\n\n↓↓↓↓↓↓↓ Remote-SSH ↓↓↓↓↓↓↓\n"
+echo -e "\n\n↓↓↓↓↓↓↓↓↓↓ Remote-SSH ↓↓↓↓↓↓↓↓↓↓\n"
 
 # 停止存在的服务
 etc/init.d/ssh stop
@@ -27,5 +27,5 @@ expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*pass
 
 # 显示信息
 echo "SSH       : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
-echo "Password  : ${PASS}
+echo "Password  : ${PASS}"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
