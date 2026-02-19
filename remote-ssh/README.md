@@ -12,5 +12,5 @@ curl -fSSLo remote-ssh-boot.sh https://raw.githubusercontent.com/l00jj/termux-he
 # 日常启动
 
 ```shell
-bash n8n-boot.sh
+bash remote-ssh-boot.sh
 ```
