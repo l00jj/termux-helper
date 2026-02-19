@@ -19,7 +19,7 @@ else
     # 可修改最后数字选密码长度
     PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4)
     # 设置新密码
-    expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof"
+    expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
     # 保存密码到文件
     echo "$PASS" > "$PASS_FILE"
     # 其他用户无法查看
