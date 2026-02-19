@@ -3,7 +3,7 @@
 echo -e "\n\n↓↓↓↓↓↓↓↓↓↓ Remote-SSH ↓↓↓↓↓↓↓↓↓↓\n"
 
 # 停止存在的服务
-etc/init.d/ssh stop
+killall sshd
 
 SSH_PORT=55599
 USER_NAME=$(whoami)
@@ -11,11 +11,11 @@ USER_NAME=$(whoami)
 # 获取 IP
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
 
-# 可选密码范围 %0<number>d 10^<number>
-PASS=$(printf "%04d" $(( $(od -An -N4 -tu4 < /dev/urandom) % 10000 )))
+# 可修改最后数字选密码长度
+PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4)
 
 # 设置新密码
-expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof"
+expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
 
 # PermitRootLogin yes         # 允许 Root 登录
 # PubkeyAuthentication no     # 不必配置秘钥
