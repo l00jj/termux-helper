@@ -1,7 +1,7 @@
 #!/bin/bash
 # ~/start-n8n.sh
 
-LOCAL_IP=$(ip route get 1 | awk '{print $7;exit}')
+LOCAL_IP=$(hostname -I | awk '{print $1}')
 
 # 核心配置
 export N8N_HOST=0.0.0.0
