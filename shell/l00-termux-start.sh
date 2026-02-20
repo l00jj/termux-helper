@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Depend: expect
+
 echo -e "\n------- l00 Init -------\n"
 
 SSH_PORT=55522
@@ -9,14 +11,14 @@ PASS_FILE=~/l00-termux-start-pw
 # 获取 IP
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
 
-# 检查 sshd 是否已经在运行，但当前无插件情况下不判断端口是否正确
-if pgrep -x sshd > /dev/null; then
+# 检查 sshd -p [SSH_PORT] 端口是否已经启用
+if pgrep -a sshd | grep -q "\-p ${SSH_PORT}"; then
     echo "sshd already running on port ${SSH_PORT}"
     # （暂时不需要验证）检查密码文件是否存在 if [ -f "$PASS_FILE" ]; then
     PASS=$(cat "$PASS_FILE")
     PASS_STATUS=""
 else
-    # 可修改最后数字选密码长度，由于 head 是满足即中断，cat 和 tr 还在工作，所以会报错
+    # 可修改最后数字选密码长度，由于 head 是满足即中断，cat 和 tr 还在工作，所以会报错，不影响结果
     PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4 2>/dev/null)
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
