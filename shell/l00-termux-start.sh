@@ -18,8 +18,8 @@ if pgrep -a sshd | grep -q "\-p ${SSH_PORT}"; then
     PASS=$(cat "$PASS_FILE")
     PASS_STATUS=""
 else
-    # 可修改最后数字选密码长度，由于 head 是满足即中断，cat 和 tr 还在工作，所以会报错，不影响结果
-    PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4 2>/dev/null)
+    # 如需修改长度 "%04d" 与 9999 都要修改
+    PASS=$(printf "%04d" $(shuf -i 0-9999 -n 1))
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
     # 保存密码到文件
