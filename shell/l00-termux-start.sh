@@ -16,7 +16,7 @@ if pgrep -x sshd > /dev/null; then
     PASS=$(cat "$PASS_FILE")
     PASS_STATUS=""
 else
-    # 可修改最后数字选密码长度
+    # 可修改最后数字选密码长度，由于 head 是满足即中断，cat 和 tr 还在工作，所以会报错
     PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4 2>/dev/null)
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
