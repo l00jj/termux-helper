@@ -9,7 +9,7 @@ USER_NAME=$(whoami)
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
 
 # 可修改最后数字选密码长度
-PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4)
+PASS=$(cat /dev/urandom | tr -dc '0-9' | head -c 4 2>/dev/null)
 
 # 设置新密码
 expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
