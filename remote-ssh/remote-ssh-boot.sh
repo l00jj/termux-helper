@@ -2,7 +2,7 @@
 
 echo -e "\n\n↓↓↓↓↓↓↓↓↓↓ Remote-SSH ↓↓↓↓↓↓↓↓↓↓\n"
 
-SSH_PORT=55599
+SSH_PORT=10066
 USER_NAME=$(whoami)
 
 # 获取 IP

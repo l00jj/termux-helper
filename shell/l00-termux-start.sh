@@ -4,7 +4,7 @@
 
 echo -e "\n------- l00 Init -------\n"
 
-SSH_PORT=55522
+SSH_PORT=10022
 USER_NAME=$(whoami)
 PASS_FILE=~/l00-termux-start-pw
 
