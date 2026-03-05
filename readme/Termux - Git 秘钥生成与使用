@@ -1,0 +1,14 @@
+# Ubuntu 环境
+
+## ssh 的位置
+```
+ls /etc/ssh
+```
+
+## 生成秘钥
+后面的邮箱实际可以换成任何标记
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key
+
