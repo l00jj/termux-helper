@@ -2,7 +2,7 @@
 
 # Depend: expect
 
-echo -e "\n------- l00 Init -------\n"
+echo -e "\n--------------- l00 Init ---------------\n"
 
 SSH_PORT=10022
 USER_NAME=$(whoami)
@@ -45,7 +45,8 @@ echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 echo "查询进程    : top"
 echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
+echo "启用 ubuntu 远程 : bash remote-ssh-boot.sh"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
-echo ">>> 当前环境是 ubuntu <<<"
+echo ">>>>>>>>>>>>>>> 自动进入 Ubuntu <<<<<<<<<<<<<<<"
 proot-distro login ubuntu
