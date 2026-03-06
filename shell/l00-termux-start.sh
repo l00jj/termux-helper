@@ -48,5 +48,5 @@ echo "终止PID进程 : kill <PID>"
 echo "启用 ubuntu 远程 : bash remote-ssh-boot.sh"
 echo -e "\n - - - - - - - - - - - - - - - - - - -\n\n"
 
-echo ">>>>>>>>>>>>>>> 自动进入 Ubuntu <<<<<<<<<<<<<<<"
+echo ">>>>>>>>>>>> 自动进入 Ubuntu <<<<<<<<<<<<"
 proot-distro login ubuntu
