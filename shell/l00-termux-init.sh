@@ -27,6 +27,7 @@ echo "查询进程    : top"
 echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
 echo "启用 SSH   : bash boot-ssh.sh"
+echo " * 启用 SSH 也可以长按导航栏“菜单”二级“SSH”
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 
 echo -e "\n - - - - - - - Login Ubuntu  - - - - - - - \n"
@@ -71,7 +72,7 @@ echo "✅ ~/.bashrc"
 # 修改 Termux 的导航栏
 #
 ###############################################################################
-
+echo "正在修改 ~/.termux/termux.properties"
 
 # 1. 定义路径变量
 TEMP_CONFIG="$HOME/termux_new_config"
@@ -85,7 +86,7 @@ hide-soft-keyboard-on-startup = true
 # 自定义双层按钮
 extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
-    {key: DRAWER, popup: {macro: "bash ~/boot-ssh.sh", display: "SSH"}}, \
+    {key: DRAWER, popup: {macro: "bash ~/boot-ssh.sh\n", display: "SSH"}}, \
     'HOME', 'UP', 'END', \
     {key: ENTER, popup: {macro: "y ENTER", display: "y↲"}} \
 ],[ \
@@ -108,6 +109,7 @@ cat "$TEMP_CONFIG" >> "$TARGET_CONFIG"
 termux-reload-settings
 
 
+echo "✅ ~/.termux/termux.properties"
 
 
 
@@ -115,3 +117,66 @@ termux-reload-settings
 
 
 
+
+
+
+
+
+
+
+
+
+###############################################################################
+#
+# 创建 SSH 启动脚本 boot-ssh.sh
+#
+###############################################################################
+echo "创建 SSH 启动脚本 ~/boot-ssh.sh"
+
+## 1. 定义路径变量
+TARGET_CONFIG="$HOME/boot-ssh.sh"
+
+## 2. 写入脚本
+cat << 'EOF' > "$TEMP_CONFIG"
+#!/bin/bash
+
+SSH_PORT=10022
+USER_NAME=$(whoami)
+PASS_FILE=~/l00-termux-start-pw
+
+# 获取 IP
+IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
+
+# 检查 sshd -p [SSH_PORT] 端口是否已经启用
+if pgrep -a sshd | grep -q "\-p ${SSH_PORT}"; then
+    echo "sshd already running on port ${SSH_PORT}"
+    # （暂时不需要验证）检查密码文件是否存在 if [ -f "$PASS_FILE" ]; then
+    PASS=$(cat "$PASS_FILE")
+    PASS_STATUS=""
+else
+    # 如需修改长度 "%04d" 与 9999 都要修改
+    PASS=$(printf "%04d" $(shuf -i 0-9999 -n 1))
+    # 设置新密码
+    expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
+    # 保存密码到文件
+    echo "$PASS" > "$PASS_FILE"
+    # 其他用户无法查看
+    chmod 600 "$PASS_FILE"
+    PASS_STATUS="[New PW]"
+    # 启动 sshd
+    echo "Starting sshd..."
+    sshd -p ${SSH_PORT}
+fi
+
+
+# 显示信息
+echo -e "\n - - - - - - - - Termux SSH - - - - - - - - \n"
+echo "Username  : ${USER_NAME}"
+echo "IP Address: ${IP_ADDRESS}"
+echo "SSH PORT  : ${SSH_PORT}"
+echo "Password  : ${PASS}  ${PASS_STATUS}"
+echo "终端接入命令 : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
+echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n\n"
+EOF
+
+echo "✅ 成功创建 SSH 启动脚本 ~/boot-ssh.sh"
