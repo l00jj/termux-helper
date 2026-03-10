@@ -23,7 +23,6 @@ cat << 'EOF' > "$TEMP_CONFIG"
 # >>> l00 Config Start >>>
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 echo "查询进程    : top"
-echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
 echo "启用 SSH   : bash ~/boot-ssh.sh"
 echo "** 启用 SSH 方法二 : 也可以长按导航栏“菜单”二级“SSH” "
@@ -172,10 +171,8 @@ fi
 
 # 显示信息
 echo -e "\n - - - - - - - - Termux SSH - - - - - - - - \n"
-echo "Username  : ${USER_NAME}"
-echo "IP Address: ${IP_ADDRESS}"
-echo "SSH PORT  : ${SSH_PORT}"
-echo "SSH Login : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
+echo "Close SHH : pkill sshd"
+echo "Login SSH : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo "Password  : ${PASS}  ${PASS_STATUS}"
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n\n"
 EOF
