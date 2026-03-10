@@ -46,7 +46,7 @@ fuser -k ${SSH_PORT}/tcp 2>/dev/null
 
 # 显示信息
 echo -e "\n - - - - - - - - Ubuntu SSH - - - - - - - - \n"
-echo "Close SSH : Exit Ubuntu 退出当前环境即可"
+echo "Close SSH : 退出 或 fuser -k ${SSH_PORT}/tcp"
 echo "Login SSH : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo "Password  : ${PASS}"
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n\n"
