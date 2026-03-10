@@ -25,9 +25,11 @@ echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 echo "查询进程    : top"
 echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
-echo "启用 SSH   : bash boot-ssh.sh"
+echo "启用 SSH   : bash ~/boot-ssh.sh"
 echo " * 启用 SSH 也可以长按导航栏“菜单”二级“SSH”
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
+
+alias bootssh="bash ~/boot-ssh.sh" # 快捷指令
 
 echo -e "\n - - - - - - - Login Ubuntu  - - - - - - - \n"
 proot-distro login ubuntu
@@ -85,7 +87,7 @@ hide-soft-keyboard-on-startup = true
 # 自定义双层按钮
 extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
-    {key: DRAWER, popup: {macro: "bash\ ~/boot-ssh.sh\n", display: "SSH"}}, \
+    {key: DRAWER, popup: {macro: "bootssh\n", display: "SSH"}}, \
     'HOME', 'UP', 'END', \
     {key: ENTER, popup: {macro: "y ENTER", display: "y↲"}} \
 ],[ \
