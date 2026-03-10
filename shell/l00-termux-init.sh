@@ -26,7 +26,7 @@ echo "查询进程    : top"
 echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
 echo "启用 SSH   : bash ~/boot-ssh.sh"
-echo " * 启用 SSH 也可以长按导航栏“菜单”二级“SSH”
+echo " * 启用 SSH 也可以长按导航栏“菜单”二级“SSH” * "
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 
 alias bootssh="bash ~/boot-ssh.sh" # 快捷指令
