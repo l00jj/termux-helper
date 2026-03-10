@@ -173,8 +173,8 @@ echo -e "\n - - - - - - - - Termux SSH - - - - - - - - \n"
 echo "Username  : ${USER_NAME}"
 echo "IP Address: ${IP_ADDRESS}"
 echo "SSH PORT  : ${SSH_PORT}"
+echo "SSH Login : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo "Password  : ${PASS}  ${PASS_STATUS}"
-echo "终端接入命令 : ssh ${USER_NAME}@${IP_ADDRESS} -p ${SSH_PORT}"
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n\n"
 EOF
 
