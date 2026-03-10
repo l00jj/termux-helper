@@ -35,8 +35,8 @@ proot-distro login ubuntu
 EOF
 
 # 3. 检查文件是否存在，且如果存在旧块，则整块删除
-if [ ! -f TARGET_CONFIG ]; then
-    touch TARGET_CONFIG
+if [ ! -f "$TARGET_CONFIG" ]; then
+    touch "$TARGET_CONFIG"
 fi
 if grep -q "# >>> l00 Config Start >>>" "$TARGET_CONFIG"; then
     sed -i '/# >>> l00 Config Start >>>/,/# <<< l00 Config End <<</d' "$TARGET_CONFIG"
@@ -85,7 +85,7 @@ hide-soft-keyboard-on-startup = true
 # 自定义双层按钮
 extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
-    {key: DRAWER, popup: {macro: "bash ~/boot-ssh.sh\n", display: "SSH"}}}, \
+    {key: DRAWER, popup: {macro: "bash ~/boot-ssh.sh", display: "SSH"}}}, \
     'HOME', 'UP', 'END', \
     {key: ENTER, popup: {macro: "y ENTER", display: "y↲"}} \
 ],[ \
