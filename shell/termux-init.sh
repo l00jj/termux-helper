@@ -140,7 +140,7 @@ echo "创建 SSH 启动脚本 ~/boot-ssh.sh"
 cat << 'EOF' > "$HOME/boot-ssh.sh"
 #!/bin/bash
 
-SSH_PORT=10022
+SSH_PORT=10088
 USER_NAME=$(whoami)
 PASS_FILE=~/l00-termux-start-pw
 
