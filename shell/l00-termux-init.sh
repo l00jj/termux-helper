@@ -85,7 +85,7 @@ hide-soft-keyboard-on-startup = true
 # 自定义双层按钮
 extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
-    {key: DRAWER, popup: {macro: "bash ~/boot-ssh.sh", display: "SSH"}}}, \
+    {key: DRAWER, popup: {macro: "bash ~/boot-ssh.sh", display: "SSH"}}, \
     'HOME', 'UP', 'END', \
     {key: ENTER, popup: {macro: "y ENTER", display: "y↲"}} \
 ],[ \
