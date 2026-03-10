@@ -26,10 +26,12 @@ echo "查询进程    : top"
 echo "终止相关进程 : pkill sshd"
 echo "终止PID进程 : kill <PID>"
 echo "启用 SSH   : bash ~/boot-ssh.sh"
-echo " * 启用 SSH 也可以长按导航栏“菜单”二级“SSH” * "
+echo "** 启用 SSH 方法二 : 也可以长按导航栏“菜单”二级“SSH” "
+echo "** 启用 SSH 方法三 : 直接输入 bootssh "
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 
-alias bootssh="bash ~/boot-ssh.sh" # 快捷指令
+# 快捷指令，在 Termux 导航栏失效时使用
+alias bootssh="bash ~/boot-ssh.sh"
 
 echo -e "\n - - - - - - - Login Ubuntu  - - - - - - - \n"
 proot-distro login ubuntu
