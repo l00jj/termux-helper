@@ -134,11 +134,9 @@ echo "✅ ~/.termux/termux.properties"
 ###############################################################################
 echo "创建 SSH 启动脚本 ~/boot-ssh.sh"
 
-## 1. 定义路径变量
-TARGET_CONFIG="$HOME/boot-ssh.sh"
+## 创建脚本
 
-## 2. 写入脚本
-cat << 'EOF' > "$TEMP_CONFIG"
+cat << 'EOF' > "$HOME/boot-ssh.sh"
 #!/bin/bash
 
 SSH_PORT=10022
@@ -155,8 +153,8 @@ if pgrep -a sshd | grep -q "\-p ${SSH_PORT}"; then
     PASS=$(cat "$PASS_FILE")
     PASS_STATUS=""
 else
-    # 如需修改长度 "%04d" 与 9999 都要修改
-    PASS=$(printf "%04d" $(shuf -i 0-9999 -n 1))
+    # 如需修改长度 "%05d" 与 99999 都要修改
+    PASS=$(printf "%05d" $(shuf -i 0-99999 -n 1))
     # 设置新密码
     expect -c "spawn passwd; expect \"*password*\"; send \"$PASS\r\"; expect \"*password*\"; send \"$PASS\r\"; expect eof" >/dev/null 2>&1
     # 保存密码到文件
