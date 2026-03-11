@@ -27,6 +27,7 @@ echo "终止PID进程 : kill <PID> (简单退出APP无效)"
 echo "启用 SSH   : bash ~/boot-ssh.sh"
 echo "** 启用 SSH 方法二 : 也可以长按导航栏“菜单”二级“SSH” "
 echo "** 启用 SSH 方法三 : 直接输入 bootssh "
+echo "Ubuntu   : proot-distro login ubuntu"
 echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 
 # 快捷指令，在 Termux 导航栏失效时使用
