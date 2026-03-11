@@ -41,9 +41,7 @@ EOF
 if [ ! -f "$TARGET_CONFIG" ]; then
     touch "$TARGET_CONFIG"
 fi
-if grep -q "# >>> l00 Config Start >>>" "$TARGET_CONFIG"; then
-    sed -i '/# >>> l00 Config Start >>>/,/# <<< l00 Config End <<</d' "$TARGET_CONFIG"
-fi
+sed -i '/# >>> l00 Config Start >>>/,/# <<< l00 Config End <<</d' "$TARGET_CONFIG"
 
 # 4. 将新配置追加到文件末尾
 cat "$TEMP_CONFIG" >> "$TARGET_CONFIG"
@@ -99,9 +97,8 @@ extra-keys = [[ \
 EOF
 
 # 3. 如果存在旧块，则整块删除
-if grep -q "# >>> l00 Config Start >>>" "$TARGET_CONFIG"; then
-    sed -i '/# >>> l00 Config Start >>>/,/# <<< l00 Config End <<</d' "$TARGET_CONFIG"
-fi
+sed -i '/# >>> l00 Config Start >>>/,/# <<< l00 Config End <<</d' "$TARGET_CONFIG"
+
 
 # 4. 将新配置追加到文件末尾
 cat "$TEMP_CONFIG" >> "$TARGET_CONFIG"
