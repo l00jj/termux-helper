@@ -136,6 +136,10 @@ echo "✅ ~/.termux/termux.properties"
 # 创建进入 proot 环境快捷方式 boot-proot.sh
 #
 ###############################################################################
+echo "创建进入 proot 环境快捷方式 boot-proot.sh"
+
+## 创建脚本
+
 cat << 'EOF' > "$HOME/boot-proot.sh"
 #!/bin/bash
 
