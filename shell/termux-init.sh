@@ -92,9 +92,9 @@ extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
     {macro: "bash SPACE ~/boot-proot.sh\n", display: "MAIN"}, \
     {key: DRAWER, popup: {macro: "bash SPACE ~/boot-ssh.sh\n", display: "SSH"}}, \
-    {key: HOME, display: "⥒"}, \
+    {key: HOME, display: "⇤"}, \
     'UP', \
-    {key: END, display: "⥓"}, \
+    {key: END, display: "⇥"}, \
     {key: ENTER, popup: {macro: "y ENTER", display: "y↲"}} \
 ],[ \
     {macro: "CTRL d", display: "⌃D"}, \
