@@ -91,7 +91,7 @@ hide-soft-keyboard-on-startup = true
 extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
     {macro: "bash SPACE ~/boot-proot.sh\n", display: "MAIN"}, \
-    {key: DRAWER, popup: {macro: "bash SPACE ~/boot-ssh.sh\n", display: "SSH"}}, \
+    DRAWER, \
     {key: HOME, display: "⇤"}, \
     'UP', \
     {key: END, display: "⇥"}, \
