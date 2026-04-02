@@ -33,8 +33,9 @@ echo -e "\n - - - - - - - - - - - - - - - - - - - - - \n"
 # 快捷指令，在 Termux 导航栏失效时使用
 alias bootssh="bash ~/boot-ssh.sh"
 
-echo -e "\n - - - - - - - Login Ubuntu  - - - - - - - \n"
-proot-distro login ubuntu
+# 新版转移到 ~/boot-proot.sh
+# echo -e "\n - - - - - - - Login Ubuntu  - - - - - - - \n"
+# proot-distro login ubuntu
 # <<< l00 Config End <<<
 EOF
 
@@ -89,11 +90,15 @@ hide-soft-keyboard-on-startup = true
 # 自定义双层按钮
 extra-keys = [[ \
     {macro: "CTRL c", display: "⌃C"}, \
+    {macro: "bash SPACE ~/boot-proot.sh\n", display: "MAIN"}, \
     {key: DRAWER, popup: {macro: "bash SPACE ~/boot-ssh.sh\n", display: "SSH"}}, \
-    'HOME', 'UP', 'END', \
+    {key: HOME, display: "⥒"}, \
+    'UP', \
+    {key: END, display: "⥓"}, \
     {key: ENTER, popup: {macro: "y ENTER", display: "y↲"}} \
 ],[ \
     {macro: "CTRL d", display: "⌃D"}, \
+    {macro: "bash SPACE ~/boot-ssh.sh\n", display: "SSH"}, \
     'CTRL', 'LEFT', 'DOWN', 'RIGHT', 'ALT' \
 ]]
 # <<< l00 Config End <<<
@@ -114,6 +119,31 @@ echo "✅ ~/.termux/termux.properties"
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################
+#
+# 创建进入 proot 环境快捷方式 boot-proot.sh
+#
+###############################################################################
+cat << 'EOF' > "$HOME/boot-proot.sh"
+#!/bin/bash
+
+echo -e "\n - - - - - - - Login Ubuntu  - - - - - - - \n"
+proot-distro login ubuntu
+EOF
+
+echo "✅ 成功创建进入 proot 环境快捷方式 boot-proot.sh"
 
 
 
